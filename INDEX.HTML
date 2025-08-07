@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Gathering GCL 2025</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
+    .container {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+      max-width: 600px;
+      width: 100%;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #00d4ff;
+    }
+    h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+    p {
+      font-size: 1rem;
+      margin: 10px 0;
+    }
+    .footer {
+      margin-top: 20px;
+      font-size: 0.85rem;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Navigating The Turbulence,<br>Cruising The Opportunities</h1>
+    <h2 id="title">Selamat Datang di Customer Gathering GCL 2025</h2>
+    <p id="content">Memuat data...</p>
+    <div class="footer">© 2025 PT GCL. All rights reserved.</div>
+  </div>
+
+  <script>
+    function getParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    const company = getParam("company");
+    const table = getParam("table");
+
+    const content = document.getElementById("content");
+
+    if (company && table) {
+      content.innerHTML = `<strong>${company}</strong><br>Nomor Meja: <strong>${table}</strong>`;
+
+      const formURL = "https://docs.google.com/forms/d/e/1FAIpQLScU5G2UO2TKcVffDQEjSZdQuXfq43Ldgfq-lJW9DedgRmQbqg/formResponse";
+      const formData = new FormData();
+      formData.append("entry.712340243", company);
+      formData.append("entry.1805472999", table);
+
+      fetch(formURL, {
+        method: "POST",
+        mode: "no-cors",
+        body: formData
+      });
+    } else {
+      content.innerHTML = "Data perusahaan tidak ditemukan.<br><br><strong>Harap scan ulang QR Code.</strong>";
+    }
+  </script>
+</body>
+</html>
