@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Gathering GCL 2025</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 2rem;
+      text-align: center;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 500px;
+      margin: auto;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    .info {
+      margin: 1.5rem 0;
+      font-size: 1.2rem;
+    }
+    .footer {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Selamat Datang di Customer Gathering GCL 2025</h1>
+    <div class="info" id="company"></div>
+    <div class="info" id="table"></div>
+    <div class="footer">Navigating The Turbulence, Cruising The Opportunities</div>
+  </div>
+
+  <form id="gform" action="https://docs.google.com/forms/u/0/d/e/1FAIpQLScU5G2UO2TKcVffDQEjSZdQuXfq43Ldgfq-lJW9DedgRmQbqg/formResponse" method="POST" style="display:none;">
+    <input name="entry.712340243" id="entryCompany" type="text" />
+    <input name="entry.1805472999" id="entryTable" type="text" />
+  </form>
+
+  <script>
+    function getParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
+
+    const company = getParam("company");
+    const table = getParam("table");
+
+    if (company && table) {
+      document.getElementById("company").textContent = "Nama Perusahaan: " + company;
+      document.getElementById("table").textContent = "Nomor Meja: " + table;
+
+      document.getElementById("entryCompany").value = company;
+      document.getElementById("entryTable").value = table;
+
+      document.getElementById("gform").submit();
+    } else {
+      document.getElementById("company").textContent = "Data perusahaan tidak ditemukan.";
+      document.getElementById("table").textContent = "Harap scan ulang QR Code.";
+    }
+  </script>
+</body>
+</html>
